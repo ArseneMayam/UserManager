@@ -1,0 +1,8 @@
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Common\bin\Debug\netcoreapp2.2\UserManager.Common.deps.json
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Common\bin\Debug\netcoreapp2.2\UserManager.Common.dll
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Common\bin\Debug\netcoreapp2.2\UserManager.Common.pdb
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Common\obj\Debug\netcoreapp2.2\UserManager.Common.csproj.CoreCompileInputs.cache
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Common\obj\Debug\netcoreapp2.2\UserManager.Common.AssemblyInfoInputs.cache
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Common\obj\Debug\netcoreapp2.2\UserManager.Common.AssemblyInfo.cs
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Common\obj\Debug\netcoreapp2.2\UserManager.Common.dll
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Common\obj\Debug\netcoreapp2.2\UserManager.Common.pdb

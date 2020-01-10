@@ -1,0 +1,14 @@
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\bin\Debug\netcoreapp2.2\usermanagement.deps.json
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\bin\Debug\netcoreapp2.2\usermanagement.runtimeconfig.json
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\bin\Debug\netcoreapp2.2\usermanagement.runtimeconfig.dev.json
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\bin\Debug\netcoreapp2.2\usermanagement.dll
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\bin\Debug\netcoreapp2.2\usermanagement.pdb
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\obj\Debug\netcoreapp2.2\usermanagement.csprojAssemblyReference.cache
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\obj\Debug\netcoreapp2.2\usermanagement.csproj.CoreCompileInputs.cache
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\obj\Debug\netcoreapp2.2\usermanagement.RazorAssemblyInfo.cache
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\obj\Debug\netcoreapp2.2\usermanagement.RazorAssemblyInfo.cs
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\obj\Debug\netcoreapp2.2\usermanagement.AssemblyInfoInputs.cache
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\obj\Debug\netcoreapp2.2\usermanagement.AssemblyInfo.cs
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\obj\Debug\netcoreapp2.2\usermanagement.RazorTargetAssemblyInfo.cache
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\obj\Debug\netcoreapp2.2\usermanagement.dll
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\obj\Debug\netcoreapp2.2\usermanagement.pdb

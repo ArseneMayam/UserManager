@@ -1,0 +1,12 @@
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Data\bin\Debug\netcoreapp2.2\UserManager.Data.deps.json
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Data\bin\Debug\netcoreapp2.2\UserManager.Data.dll
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Data\bin\Debug\netcoreapp2.2\UserManager.Data.pdb
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Data\bin\Debug\netcoreapp2.2\UserManager.Common.dll
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Data\bin\Debug\netcoreapp2.2\UserManager.Common.pdb
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Data\obj\Debug\netcoreapp2.2\UserManager.Data.csprojAssemblyReference.cache
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Data\obj\Debug\netcoreapp2.2\UserManager.Data.csproj.CoreCompileInputs.cache
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Data\obj\Debug\netcoreapp2.2\UserManager.Data.AssemblyInfoInputs.cache
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Data\obj\Debug\netcoreapp2.2\UserManager.Data.AssemblyInfo.cs
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Data\obj\Debug\netcoreapp2.2\UserManager.Data.csproj.CopyComplete
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Data\obj\Debug\netcoreapp2.2\UserManager.Data.dll
+C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Data\obj\Debug\netcoreapp2.2\UserManager.Data.pdb
