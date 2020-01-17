@@ -9,7 +9,8 @@
       "UserManager.Data/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.6",
-          "UserManager.Common": "1.0.0"
+          "UserManager.Common": "1.0.0",
+          "UserManager.Framework": "1.0.0"
         },
         "runtime": {
           "UserManager.Data.dll": {}
@@ -505,6 +506,14 @@
         "runtime": {
           "UserManager.Common.dll": {}
         }
+      },
+      "UserManager.Framework/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "2.2.0"
+        },
+        "runtime": {
+          "UserManager.Framework.dll": {}
+        }
       }
     }
   },
@@ -886,6 +895,11 @@
       "hashPath": "system.threading.tasks.4.0.11.nupkg.sha512"
     },
     "UserManager.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UserManager.Framework/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

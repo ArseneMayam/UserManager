@@ -19,3 +19,5 @@ C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\obj\Debug\netco
 C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\obj\Debug\netcoreapp2.2\UserManager.Api.pdb
 C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\bin\Debug\netcoreapp2.2\UserManager.Services.dll
 C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\bin\Debug\netcoreapp2.2\UserManager.Services.pdb
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\bin\Debug\netcoreapp2.2\UserManager.Framework.dll
+C:\Users\arsene.mayam\source\repos\usermanagement\usermanagement\bin\Debug\netcoreapp2.2\UserManager.Framework.pdb

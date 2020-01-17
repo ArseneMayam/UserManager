@@ -6,6 +6,15 @@ namespace UserManager.Api.Entities
 {
     public class Utilisateur
     {
+        public Utilisateur()
+        {
+
+        }
+        public Utilisateur(string lname, string fname)
+        {
+            LastName = lname;
+            FirstName = fname;
+        }
         [Key]
         public int Id { get; set; }
         public string LastName { get; set; }

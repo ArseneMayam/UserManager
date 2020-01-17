@@ -916,6 +916,19 @@
         "runtime": {
           "bin/placeholder/UserManager.Common.dll": {}
         }
+      },
+      "UserManager.Framework/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "2.2.0"
+        },
+        "compile": {
+          "bin/placeholder/UserManager.Framework.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UserManager.Framework.dll": {}
+        }
       }
     }
   },
@@ -3472,13 +3485,19 @@
       "type": "project",
       "path": "../UserManager.Common/UserManager.Common.csproj",
       "msbuildProject": "../UserManager.Common/UserManager.Common.csproj"
+    },
+    "UserManager.Framework/1.0.0": {
+      "type": "project",
+      "path": "../UserManager.Framework/UserManager.Framework.csproj",
+      "msbuildProject": "../UserManager.Framework/UserManager.Framework.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.2.6",
       "Microsoft.NETCore.App >= 2.2.0",
-      "UserManager.Common >= 1.0.0"
+      "UserManager.Common >= 1.0.0",
+      "UserManager.Framework >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3513,6 +3532,9 @@
           "projectReferences": {
             "C:\\Users\\arsene.mayam\\source\\repos\\usermanagement\\UserManager.Common\\UserManager.Common.csproj": {
               "projectPath": "C:\\Users\\arsene.mayam\\source\\repos\\usermanagement\\UserManager.Common\\UserManager.Common.csproj"
+            },
+            "C:\\Users\\arsene.mayam\\source\\repos\\usermanagement\\UserManager.Framework\\UserManager.Framework.csproj": {
+              "projectPath": "C:\\Users\\arsene.mayam\\source\\repos\\usermanagement\\UserManager.Framework\\UserManager.Framework.csproj"
             }
           }
         }

@@ -922,13 +922,27 @@
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.6",
-          "UserManager.Common": "1.0.0"
+          "UserManager.Common": "1.0.0",
+          "UserManager.Framework": "1.0.0"
         },
         "compile": {
           "bin/placeholder/UserManager.Data.dll": {}
         },
         "runtime": {
           "bin/placeholder/UserManager.Data.dll": {}
+        }
+      },
+      "UserManager.Framework/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "2.2.0"
+        },
+        "compile": {
+          "bin/placeholder/UserManager.Framework.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UserManager.Framework.dll": {}
         }
       }
     }
@@ -3491,6 +3505,11 @@
       "type": "project",
       "path": "../UserManager.Data/UserManager.Data.csproj",
       "msbuildProject": "../UserManager.Data/UserManager.Data.csproj"
+    },
+    "UserManager.Framework/1.0.0": {
+      "type": "project",
+      "path": "../UserManager.Framework/UserManager.Framework.csproj",
+      "msbuildProject": "../UserManager.Framework/UserManager.Framework.csproj"
     }
   },
   "projectFileDependencyGroups": {

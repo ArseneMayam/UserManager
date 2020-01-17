@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserManager.Common", "UserM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserManager.Services", "UserManager.Services\UserManager.Services.csproj", "{6E6553A8-F0CC-41C5-B259-34223B4D5BE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManager.Framework", "UserManager.Framework\UserManager.Framework.csproj", "{B3E40C5E-747D-42BB-917A-2E78B9BC126B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserManager.Framework", "UserManager.Framework\UserManager.Framework.csproj", "{B3E40C5E-747D-42BB-917A-2E78B9BC126B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BE5406D4-C420-4EA0-BBF7-C6CC4ECA9099}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManager.Framework.Tests", "UserManager.Framework.Tests\UserManager.Framework.Tests.csproj", "{8BA1DCA5-5472-451E-9A4B-F5A73D0D14A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +43,16 @@ Global
 		{B3E40C5E-747D-42BB-917A-2E78B9BC126B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3E40C5E-747D-42BB-917A-2E78B9BC126B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3E40C5E-747D-42BB-917A-2E78B9BC126B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BA1DCA5-5472-451E-9A4B-F5A73D0D14A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BA1DCA5-5472-451E-9A4B-F5A73D0D14A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BA1DCA5-5472-451E-9A4B-F5A73D0D14A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BA1DCA5-5472-451E-9A4B-F5A73D0D14A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8BA1DCA5-5472-451E-9A4B-F5A73D0D14A1} = {BE5406D4-C420-4EA0-BBF7-C6CC4ECA9099}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6C004CBF-A147-4D1D-B2D3-29BC3BB16836}
