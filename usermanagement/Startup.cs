@@ -16,6 +16,7 @@ using Microsoft.AspNet.OData.Extensions;
 using Microsoft.OData.Edm;
 using Microsoft.AspNet.OData.Builder;
 using UserManager.Common.Entities;
+using UserManager.Framework.Pipeline;
 
 namespace usermanagement
 {
@@ -36,6 +37,7 @@ namespace usermanagement
 
             services.AddScoped<IUserData, UserData>();
             services.AddScoped<IServiceUser, ServiceUser>();
+            services.AddScoped<IUserManagerServicePipeline, UserManagerServicePipeline>();
             services.AddMvcCore(action => action.EnableEndpointRouting = false);
             services.AddOData();
         }

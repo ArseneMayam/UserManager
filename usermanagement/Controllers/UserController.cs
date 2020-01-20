@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UserManager.Api.Entities;
 using UserManager.Common.Entities;
+using UserManager.Framework.Pipeline;
 using UserManager.Services.Interfaces;
 
 namespace WebApplication3.Controllers
@@ -13,10 +14,11 @@ namespace WebApplication3.Controllers
     public class UserController : ControllerBase
     {
         internal IServiceUser ServiceUser { get; set; }
-
-        public UserController(IServiceUser serviceUser)
+        internal IUserManagerServicePipeline Pipeline { get; set; }
+        public UserController(IServiceUser serviceUser, IUserManagerServicePipeline pipeline)
         {
             ServiceUser = serviceUser;
+            Pipeline = pipeline;
         }
         //// GET api/users
         [HttpGet]
@@ -35,8 +37,15 @@ namespace WebApplication3.Controllers
         [HttpGet("/utilisateurs")]
         public IEnumerable<Utilisateur> Utilisateurs()
         {
-
-            return ServiceUser.Utilisateurs();
+            var cacheKey = "userdata";
+            var fromCache = Pipeline.TestRetrieveDataCache(cacheKey);
+            if(fromCache != null)
+            {
+                return fromCache as IEnumerable<Utilisateur>;
+            }
+            var result = ServiceUser.Utilisateurs();
+            Pipeline.TestStoreDataCache(cacheKey, result);
+            return result;
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UserManager.Framework.Pipeline
 {
-    public abstract class UserManagerServicePipeline
+    public class UserManagerServicePipeline : IUserManagerServicePipeline
     {
         private IMemoryCache Cache { get; set; }
         private MemoryCacheEntryOptions MemoryCacheEntryOptions { get; set; }
