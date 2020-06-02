@@ -8,6 +8,8 @@ using Microsoft.AspNet.OData.Extensions;
 using Microsoft.OData.Edm;
 using Microsoft.AspNet.OData.Builder;
 using UserManager.Framework.Pipeline;
+using UserManager.Data.Interfaces;
+using UserManager.Common.Models;
 
 namespace usermanagement
 {
@@ -23,10 +25,11 @@ namespace usermanagement
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
-           // services.AddDbContext<UserDataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("UserManagementConnectionStrings"), providerOptions => providerOptions.EnableRetryOnFailure()));
+            services.AddDbContext<UserManager.Data.DataAccessContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RhbdConnectionStrings"), providerOptions => providerOptions.EnableRetryOnFailure()));
 
-           // services.AddScoped<IUserData, UserData>();
-          
+            services.AddScoped<IEmployeData,UserManager.Data.EmployeData> ();
+            services.AddScoped<UserManager.Services.Interfaces.IEmployeService, UserManager.Services.Source.EmployeService>();
+
             services.AddScoped<IUserManagerServicePipeline, UserManagerServicePipeline>();
             services.AddMvcCore(action => action.EnableEndpointRouting = false);
             services.AddOData();
@@ -39,12 +42,12 @@ namespace usermanagement
             {
                 app.UseDeveloperExceptionPage();
             }
-           /* else
+           
             {
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();*/
+            app.UseHttpsRedirection();
 
 
             app.UseMvc(routeBuilder =>
@@ -64,7 +67,8 @@ namespace usermanagement
         private IEdmModel GetEdmModel()
         {
             var builder = new ODataConventionModelBuilder();
-           
+            builder.EntitySet<Employe>("Employes");
+
             return builder.GetEdmModel();
         }
     }

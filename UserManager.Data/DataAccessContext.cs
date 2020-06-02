@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using UserManager.Data.Entities;
 
-namespace UserManager.Api
+namespace UserManager.Data
 {
     public partial class DataAccessContext : DbContext
     {

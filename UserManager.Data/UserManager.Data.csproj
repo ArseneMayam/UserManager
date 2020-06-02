@@ -13,8 +13,4 @@
     <ProjectReference Include="..\UserManager.Framework\UserManager.Framework.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
-
 </Project>
