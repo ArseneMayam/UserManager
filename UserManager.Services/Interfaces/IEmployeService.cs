@@ -9,5 +9,6 @@ namespace UserManager.Services.Interfaces
     public interface IEmployeService
     {
         IQueryable<Employe> getAll();
+        IQueryable<Employe> getAllMock();
     }
 }

@@ -19,5 +19,10 @@ namespace UserManager.Services.Source
         {
             return EmployeData.getAll().AsQueryable();
         }
+
+        public IQueryable<Employe> getAllMock()
+        {
+            return EmployeData.getAllMock().AsQueryable();
+        }
     }
 }

@@ -7,5 +7,6 @@ namespace UserManager.Data.Interfaces
     public interface IEmployeData
     {
         IList<Employe> getAll();
+        IList<Employe> getAllMock();
     }
 }

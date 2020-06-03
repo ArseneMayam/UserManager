@@ -53,13 +53,9 @@ namespace usermanagement
             app.UseMvc(routeBuilder =>
             {
                 routeBuilder.Expand().Select().Count().OrderBy().Filter().MaxTop(null);
-                routeBuilder.MapODataServiceRoute("api", "api", GetEdmModel());
+                routeBuilder.MapODataServiceRoute("v1", "v1", GetEdmModel());
             });
-            /*  app.Run(async (context) =>
-              {
-                  await context.Response.WriteAsync("Hello World!");
-              });
-              */
+
 
         }
 
@@ -67,7 +63,10 @@ namespace usermanagement
         private IEdmModel GetEdmModel()
         {
             var builder = new ODataConventionModelBuilder();
-            builder.EntitySet<Employe>("Employes");
+            builder.EntitySet<Employe>("employes");
+            // ignore the list of properties to exclude
+             var employes = builder.EntitySet<Employe>("employes");
+             employes.EntityType.Ignore(emp => emp.Nas);
 
             return builder.GetEdmModel();
         }

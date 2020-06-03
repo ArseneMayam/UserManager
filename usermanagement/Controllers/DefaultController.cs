@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UserManager.Common.Models;
+using UserManager.Services.Interfaces;
 
 namespace UserManager.Api.Controllers
 {
@@ -12,6 +13,14 @@ namespace UserManager.Api.Controllers
     [ApiController]
     public class DefaultController : ControllerBase
     {
+        internal IEmployeService ServiceEmploye { get; set; }
+
+        public DefaultController(IEmployeService serviceEmploye)
+        {
+
+            ServiceEmploye = serviceEmploye;
+        }
+
 
         [HttpGet]
         [Route("version")]
@@ -36,6 +45,13 @@ namespace UserManager.Api.Controllers
                 Rib = "LAS976",
                 Tin = "SA9"
             };
+        }
+
+        [HttpGet]
+        [Route("employes")]
+        public IQueryable Employes()
+        {
+            return ServiceEmploye.getAllMock();
         }
     }
 }
