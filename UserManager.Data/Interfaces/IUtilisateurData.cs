@@ -5,7 +5,7 @@ using UserManager.Common.Models;
 
 namespace UserManager.Data.Interfaces
 {
-    interface IUtilisateurData
+    public interface IUtilisateurData
     {
         Utilisateur RecupererUtilisateur(string username, string password);
     }

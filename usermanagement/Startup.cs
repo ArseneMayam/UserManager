@@ -28,7 +28,13 @@ namespace usermanagement
             services.AddDbContext<UserManager.Data.DataAccessContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RhbdConnectionStrings"), providerOptions => providerOptions.EnableRetryOnFailure()));
 
             services.AddScoped<IEmployeData,UserManager.Data.EmployeData> ();
+            services.AddScoped<IColonneData, UserManager.Data.ColonneData>();
+            services.AddScoped<IProfileData, UserManager.Data.ProfileData>();
+            services.AddScoped<IProfileColonneData, UserManager.Data.ProfileColonneData>();
+            services.AddScoped<IUtilisateurData, UserManager.Data.UtilisateurData>();
+
             services.AddScoped<UserManager.Services.Interfaces.IEmployeService, UserManager.Services.Source.EmployeService>();
+            services.AddScoped<UserManager.Services.Interfaces.IDataAccesService, UserManager.Services.Source.DataAccessService>();
 
             services.AddScoped<IUserManagerServicePipeline, UserManagerServicePipeline>();
             services.AddMvcCore(action => action.EnableEndpointRouting = false);
