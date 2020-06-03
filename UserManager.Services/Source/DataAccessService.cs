@@ -25,12 +25,31 @@ namespace UserManager.Services.Source
         // Avec credentials
         public IList<Colonne> GererDataAccess(string username, string password)
         {
-            throw new NotImplementedException();
+            // recuperer utilisateur
+            Utilisateur utilisateur = RecupererUtilisateur(username, password);
+
+            //recuperer profile utilisateur
+            Profile profile = RecupererProfile(utilisateur.UtilisateurId);
+
+            // Recuperer liste colonne Ids
+            IList<int> listeColonneIds = RecupererListeColonneIds(profile.ProfileId);
+
+            // recuperer et retourner les colonnes
+            IList<Colonne> colonnes = RecupererColonnes(listeColonneIds);
+            return colonnes;
         }
         // sans params pour tests
-        public IList<Colonne> GererDataAccess()
+        public IList<Colonne> GererDataAccess(int utilisateur_id)
         {
-            throw new NotImplementedException();
+            //recuperer profile utilisateur
+            Profile profile = RecupererProfile(utilisateur_id);
+
+            // Recuperer liste colonne Ids
+            IList<int> listeColonneIds = RecupererListeColonneIds(profile.ProfileId);
+
+            // recuperer et retourner les colonnes
+            IList<Colonne> colonnes = RecupererColonnes(listeColonneIds);
+            return colonnes;
         }
 
         // Recuperer tous les colonnes avec la liste des colonnes_id       

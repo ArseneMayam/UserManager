@@ -23,7 +23,7 @@ namespace UserManager.Services.Interfaces
         // Avec credentials
         IList<Colonne> GererDataAccess(string username, string password);
         // sans params pour tests
-        IList<Colonne> GererDataAccess();
+        IList<Colonne> GererDataAccess(int utilisateur_id);
 
     }
 }
