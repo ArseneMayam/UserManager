@@ -18,18 +18,11 @@ namespace UserManager.Data
         {
             DataAccessContext = serviceProvider.GetService(typeof(DataAccessContext)) as DataAccessContext;
         }
-        public Colonne RecupererColonneId(int id)
+
+        // recuperer les colonnes avec une liste de colonne_id
+        public IList<Colonne> RecupererColonnes(IList<int> colonne_id)
         {
-            var colonne = DataAccessContext.Colonne.Find(id);
-
-            return colonne.ToModel();
-        }
-
-        public IList<Colonne> RecupererListeColonnes()
-        {
-            var colonnes = DataAccessContext.Colonne.ToList();
-
-            return colonnes.ToModel();
+            throw new NotImplementedException();
         }
     }
 }

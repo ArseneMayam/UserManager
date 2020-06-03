@@ -6,7 +6,7 @@ namespace UserManager.Data.Interfaces
 {
     interface IColonneData
     {
-        IList<Colonne> RecupererListeColonnes();
-        Colonne RecupererColonneId(int id);
+        // recuperer les colonnes avec une liste de colonne_id
+        IList<Colonne> RecupererColonnes(IList<int> colonne_id);
     }
 }
