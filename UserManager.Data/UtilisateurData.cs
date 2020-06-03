@@ -6,7 +6,7 @@ using UserManager.Data.Interfaces;
 
 namespace UserManager.Data
 {
-    class UtilisateurData : IUtilisateurData
+    public class UtilisateurData : IUtilisateurData
     {
         public Utilisateur RecupererUtilisateur(string username, string password)
         {

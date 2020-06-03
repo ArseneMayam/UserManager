@@ -5,7 +5,7 @@ using UserManager.Common.Models;
 
 namespace UserManager.Data.Interfaces
 {
-    interface IProfileData
+    public interface IProfileData
     {
         // recuperer un profile avec utilisateur_id
         Profile RecupererProfile(int utlisateur_id);
