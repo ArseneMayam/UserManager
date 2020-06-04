@@ -33,7 +33,7 @@ namespace UserManager.Services.Source
             Profile profile = RecupererProfile(utilisateur.UtilisateurId);
 
             // Recuperer liste colonne Ids
-            IList<int> listeColonneIds = RecupererListeColonneIds(profile.ProfileId);
+            IQueryable<int> listeColonneIds = RecupererListeColonneIds(profile.ProfileId);
 
             // recuperer et retourner les colonnes
             IQueryable<Colonne> colonnes = RecupererColonnes(listeColonneIds);
@@ -45,8 +45,8 @@ namespace UserManager.Services.Source
             //recuperer profile utilisateur
             Profile profile = RecupererProfile(utilisateur_id);
 
-            // Recuperer liste colonne Ids
-            IList<int> listeColonneIds = RecupererListeColonneIds(profile.ProfileId);
+            // Recuperer liste colonne Ids : ProfileColonne
+            IQueryable<int> listeColonneIds = RecupererListeColonneIds(profile.ProfileId);
 
             // recuperer et retourner les colonnes
             IQueryable<Colonne> colonnes = RecupererColonnes(listeColonneIds);
@@ -54,12 +54,12 @@ namespace UserManager.Services.Source
         }
 
         // Recuperer tous les colonnes avec la liste des colonnes_id       
-        public IQueryable<Colonne> RecupererColonnes(IList<int> listeColonne_id)
+        public IQueryable<Colonne> RecupererColonnes(IQueryable<int> listeColonne_id)
         {
             return ColonneData.RecupererColonnes(listeColonne_id).AsQueryable();
         }
         // Recuperer la liste des colonne_id avec un profile_id
-        public IList<int> RecupererListeColonneIds(int profile_id)
+        public IQueryable<int> RecupererListeColonneIds(int profile_id)
         {
             return ProfileColonneData.RecupererListeColonneIds(profile_id);
         }

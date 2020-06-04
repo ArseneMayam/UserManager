@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UserManager.Common.Models;
+using UserManager.Data.Extensions;
 using UserManager.Data.Interfaces;
 
 namespace UserManager.Data
@@ -18,7 +20,7 @@ namespace UserManager.Data
         // recuperer un profile avec utilisateur_id
         public Profile RecupererProfile(int utlisateur_id)
         {
-            throw new NotImplementedException();
+           return DataAccessContext.Profile.Single(b => b.Utilisateur_Id == utlisateur_id).ToModel();
         }
     }
 }

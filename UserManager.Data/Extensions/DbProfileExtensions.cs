@@ -18,9 +18,9 @@ namespace UserManager.Data.Extensions
         {
             return new Profile()
             {
-                ProfileId = dbProfile.ProfileId,
+                ProfileId = dbProfile.Profile_Id,
                 Role = dbProfile.Role,
-                UtilisateurId = dbProfile.UtilisateurId
+                UtilisateurId = dbProfile.Utilisateur_Id
             };
         }
     }

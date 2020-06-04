@@ -5,8 +5,8 @@ namespace UserManager.Data.Entities
 {
     public partial class DbProfile
     {
-        public int ProfileId { get; set; }
+        public int Profile_Id { get; set; }
         public string Role { get; set; }
-        public int UtilisateurId { get; set; }
+        public int Utilisateur_Id { get; set; }
     }
 }

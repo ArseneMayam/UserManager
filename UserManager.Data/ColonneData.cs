@@ -20,7 +20,7 @@ namespace UserManager.Data
         }
 
         // recuperer les colonnes avec une liste de colonne_id
-        public IList<Colonne> RecupererColonnes(IList<int> colonne_id)
+        public IList<Colonne> RecupererColonnes(IQueryable<int> colonne_id)
         {
             var list = DataAccessContext.Colonne.Where(c => colonne_id.Contains(c.Colonne_Id)).ToList();
             return list.ToModel();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UserManager.Common.Models;
 using UserManager.Data.Interfaces;
@@ -16,9 +17,9 @@ namespace UserManager.Data
         }
     
         // recuperer liste des colonne_id d'un profile_id donner
-        public IList<int> RecupererListeColonneIds(int profile_id)
+        public IQueryable<int> RecupererListeColonneIds(int profile_id)
         {
-            throw new NotImplementedException();
+            return DataAccessContext.ProfileColonne.Where(p => p.Colonne_Id == profile_id).Select(c => c.Colonne_Id).AsQueryable();
         }
 
         

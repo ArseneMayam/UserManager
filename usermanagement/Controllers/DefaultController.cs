@@ -61,8 +61,9 @@ namespace UserManager.Api.Controllers
         [Route("colonnes")]
         public IQueryable Colonnes()
         {
-            IList<int> list = new List<int>() {1,2,3,7};
-            return DataAccessService.RecupererColonnes(list);
+            var values = new int[] { 1,2,3,20 };
+           
+            return DataAccessService.RecupererColonnes(values.AsQueryable());
         }
     }
 }

@@ -17,9 +17,9 @@ namespace UserManager.Data.Extensions
         {
             return new ProfileColonne()
             {
-                ColonneId = dbProfileColonne.ColonneId,
+                ColonneId = dbProfileColonne.Colonne_Id,
                 Date = dbProfileColonne.Date,
-                ProfileId = dbProfileColonne.ProfileId
+                ProfileId = dbProfileColonne.Profile_Id
             };
         }
     }

@@ -15,10 +15,10 @@ namespace UserManager.Services.Interfaces
         Profile RecupererProfile(int utlisateur_id);
 
         // Recuperer la liste des colonne_id avec un profile_id : ProfileColonne
-        IList<int> RecupererListeColonneIds(int profile_id);
+        IQueryable<int> RecupererListeColonneIds(int profile_id);
 
         // Recuperer tous les colonnes avec la liste des colonnes_id       
-        IQueryable<Colonne> RecupererColonnes(IList<int> colonne_id);
+        IQueryable<Colonne> RecupererColonnes(IQueryable<int> colonne_id);
 
         // Methodes pour gerer data access 
         // Avec credentials
