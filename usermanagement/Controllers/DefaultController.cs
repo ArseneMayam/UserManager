@@ -65,5 +65,13 @@ namespace UserManager.Api.Controllers
            
             return DataAccessService.RecupererColonnes(values.AsQueryable());
         }
+
+        [HttpGet]
+        [Route("dataccess")]
+        public IQueryable DataAccess()
+        {
+            // return DataAccessService.GererDataAccess(1);
+            return DataAccessService.GererDataAccess("laure","abcd");
+        }
     }
 }

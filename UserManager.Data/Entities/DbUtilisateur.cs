@@ -5,7 +5,7 @@ namespace UserManager.Data.Entities
 {
     public partial class DbUtilisateur
     {
-        public int UtilisateurId { get; set; }
+        public int Utilisateur_Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
     }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using UserManager.Data.Extensions;
 using UserManager.Common.Models;
 using UserManager.Data.Interfaces;
 
@@ -16,7 +18,9 @@ namespace UserManager.Data
         }
         public Utilisateur RecupererUtilisateur(string username, string password)
         {
-            throw new NotImplementedException();
+            var utilisateur = DataAccessContext.Utilisateur.Where(u => u.Username == username && u.Password == password).FirstOrDefault();
+
+            return utilisateur.ToModel();
         }
     }
 }
