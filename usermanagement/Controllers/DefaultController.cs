@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UserManager.Common.Models;
 using UserManager.Services.Interfaces;
+using UserManager.Services.Source;
 
 namespace UserManager.Api.Controllers
 {
@@ -14,11 +15,13 @@ namespace UserManager.Api.Controllers
     public class DefaultController : ControllerBase
     {
         internal IEmployeService ServiceEmploye { get; set; }
+        internal IDataAccesService DataAccessService { get; set; }
 
-        public DefaultController(IEmployeService serviceEmploye)
+        public DefaultController(IEmployeService serviceEmploye, IDataAccesService dataAccessService)
         {
 
             ServiceEmploye = serviceEmploye;
+            DataAccessService = dataAccessService;
         }
 
 
@@ -51,7 +54,15 @@ namespace UserManager.Api.Controllers
         [Route("employes")]
         public IQueryable Employes()
         {
-            return ServiceEmploye.getList();
+            return ServiceEmploye.List();
+        }
+
+        [HttpGet]
+        [Route("colonnes")]
+        public IQueryable Colonnes()
+        {
+            IList<int> list = new List<int>() {1,2,3,7};
+            return DataAccessService.RecupererColonnes(list);
         }
     }
 }

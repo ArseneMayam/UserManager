@@ -5,7 +5,7 @@ namespace UserManager.Data.Entities
 {
     public partial class DbColonne
     {
-        public int ColonneId { get; set; }
+        public int Colonne_Id { get; set; }
         public string Nom { get; set; }
     }
 }

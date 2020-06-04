@@ -7,10 +7,7 @@ using UserManager.Common.Models;
 namespace UserManager.Services.Interfaces
 {
     public interface IEmployeService
-    {
-        IQueryable<Employe> getAll();
-        IQueryable<Employe> getAllMock();
-
-        IQueryable<Employe> getList();
+    {   
+        IQueryable<Employe> List();
     }
 }

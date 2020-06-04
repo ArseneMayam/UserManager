@@ -22,12 +22,14 @@ namespace UserManager.Data
         // recuperer les colonnes avec une liste de colonne_id
         public IList<Colonne> RecupererColonnes(IList<int> colonne_id)
         {
-            throw new NotImplementedException();
+            var list = DataAccessContext.Colonne.Where(c => colonne_id.Contains(c.Colonne_Id)).ToList();
+            return list.ToModel();
         }
 
-        public IList<Colonne> getAll()
+        public IList<Colonne> List()
         {
-            return null;
+            var list = DataAccessContext.Colonne.ToList();
+            return list.ToModel();
         }
     }
 }

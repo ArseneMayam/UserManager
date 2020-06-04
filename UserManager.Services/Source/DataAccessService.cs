@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UserManager.Common.Models;
 using UserManager.Data;
@@ -23,7 +24,7 @@ namespace UserManager.Services.Source
         }
         // Methodes pour gerer data access 
         // Avec credentials
-        public IList<Colonne> GererDataAccess(string username, string password)
+        public IQueryable<Colonne> GererDataAccess(string username, string password)
         {
             // recuperer utilisateur
             Utilisateur utilisateur = RecupererUtilisateur(username, password);
@@ -35,11 +36,11 @@ namespace UserManager.Services.Source
             IList<int> listeColonneIds = RecupererListeColonneIds(profile.ProfileId);
 
             // recuperer et retourner les colonnes
-            IList<Colonne> colonnes = RecupererColonnes(listeColonneIds);
+            IQueryable<Colonne> colonnes = RecupererColonnes(listeColonneIds);
             return colonnes;
         }
         // sans params pour tests
-        public IList<Colonne> GererDataAccess(int utilisateur_id)
+        public IQueryable<Colonne> GererDataAccess(int utilisateur_id)
         {
             //recuperer profile utilisateur
             Profile profile = RecupererProfile(utilisateur_id);
@@ -48,14 +49,14 @@ namespace UserManager.Services.Source
             IList<int> listeColonneIds = RecupererListeColonneIds(profile.ProfileId);
 
             // recuperer et retourner les colonnes
-            IList<Colonne> colonnes = RecupererColonnes(listeColonneIds);
+            IQueryable<Colonne> colonnes = RecupererColonnes(listeColonneIds);
             return colonnes;
         }
 
         // Recuperer tous les colonnes avec la liste des colonnes_id       
-        public IList<Colonne> RecupererColonnes(IList<int> listeColonne_id)
+        public IQueryable<Colonne> RecupererColonnes(IList<int> listeColonne_id)
         {
-            return ColonneData.RecupererColonnes(listeColonne_id);
+            return ColonneData.RecupererColonnes(listeColonne_id).AsQueryable();
         }
         // Recuperer la liste des colonne_id avec un profile_id
         public IList<int> RecupererListeColonneIds(int profile_id)
