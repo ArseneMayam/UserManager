@@ -51,7 +51,7 @@ namespace UserManager.Api.Controllers
         [Route("employes")]
         public IQueryable Employes()
         {
-            return ServiceEmploye.getAllMock();
+            return ServiceEmploye.getList();
         }
     }
 }

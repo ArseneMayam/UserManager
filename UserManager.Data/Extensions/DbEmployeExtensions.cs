@@ -18,8 +18,8 @@ namespace UserManager.Data.Extensions
         {
             return new Employe()
             {
-                EmployeId = dbEmploye.EmployeId,
-                CodeEmpl = dbEmploye.CodeEmpl,
+                EmployeId = dbEmploye.Employe_Id,
+                CodeEmpl = dbEmploye.Code_Empl,
                 Matricule = dbEmploye.Matricule,
                 Nas = dbEmploye.Nas,
                 Nationalite = dbEmploye.Natioanlite,

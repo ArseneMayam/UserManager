@@ -5,10 +5,10 @@ namespace UserManager.Data.Entities
 {
     public partial class DbEmploye
     {
-        public int EmployeId { get; set; }
+        public int Employe_Id { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
-        public int CodeEmpl { get; set; }
+        public int Code_Empl { get; set; }
         public string Matricule { get; set; }
         public string Rib { get; set; }
         public int Nas { get; set; }

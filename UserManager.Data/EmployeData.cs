@@ -6,6 +6,7 @@ using UserManager.Data.Interfaces;
 using UserManager.Data;
 using Microsoft.EntityFrameworkCore;
 using UserManager.Data.Extensions;
+using System.Linq;
 
 namespace UserManager.Data
 {
@@ -47,6 +48,15 @@ namespace UserManager.Data
                 new Employe() { EmployeId = 4, CodeEmpl = 157, Matricule = "lofy6", Nas = 7269, Nationalite = "belgium", Nom = "tony", Prenom = "frac", Rib = "gtt5", Tin = "hrh4" }
             };
             return list;
+        }
+
+        public IList<Employe> list()
+        {
+
+            //  var list = DataAccessContext.Employe.FromSql(@"Select * from employe").ToListAsync();
+            var list = DataAccessContext.Employe.ToList();
+           // list.Wait();
+            return list.ToModel();
         }
     }
 }

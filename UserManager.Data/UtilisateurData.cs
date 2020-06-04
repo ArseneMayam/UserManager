@@ -8,6 +8,12 @@ namespace UserManager.Data
 {
     public class UtilisateurData : IUtilisateurData
     {
+        internal DataAccessContext DataAccessContext { get; set; }
+
+        public UtilisateurData(IServiceProvider serviceProvider)
+        {
+            DataAccessContext = serviceProvider.GetService(typeof(DataAccessContext)) as DataAccessContext;
+        }
         public Utilisateur RecupererUtilisateur(string username, string password)
         {
             throw new NotImplementedException();

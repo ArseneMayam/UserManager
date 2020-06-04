@@ -10,5 +10,7 @@ namespace UserManager.Services.Interfaces
     {
         IQueryable<Employe> getAll();
         IQueryable<Employe> getAllMock();
+
+        IQueryable<Employe> getList();
     }
 }

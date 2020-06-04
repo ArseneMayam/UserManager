@@ -24,5 +24,10 @@ namespace UserManager.Data
         {
             throw new NotImplementedException();
         }
+
+        public IList<Colonne> getAll()
+        {
+            return null;
+        }
     }
 }
