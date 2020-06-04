@@ -37,7 +37,7 @@ namespace usermanagement
             services.AddScoped<UserManager.Services.Interfaces.IDataAccesService, UserManager.Services.Source.DataAccessService>();
 
             services.AddScoped<IUserManagerServicePipeline, UserManagerServicePipeline>();
-            services.AddMvcCore(action => action.EnableEndpointRouting = false);
+          //  services.AddMvcCore(action => action.EnableEndpointRouting = false); // comment nd see
             services.AddOData();
         }
 
@@ -58,22 +58,24 @@ namespace usermanagement
 
             app.UseMvc(routeBuilder =>
             {
-                routeBuilder.Expand().Select().Count().OrderBy().Filter().MaxTop(null);
-                routeBuilder.MapODataServiceRoute("v1", "v1", GetEdmModel());
+               
+                // routeBuilder : ajouté les methodes de Odata et buildé le url de l API 
+                routeBuilder.Expand().Select().Count().OrderBy().Filter().MaxTop(null);          
+                routeBuilder.MapODataServiceRoute("Employe", "odata/v1/employes", GetEdmModelEmployes());
             });
 
 
         }
 
         // pour que le count fonctionne faire un mapping oData sur le modele
-        private IEdmModel GetEdmModel()
+        private IEdmModel GetEdmModelEmployes()
         {
-            var builder = new ODataConventionModelBuilder();
-            builder.EntitySet<Employe>("employes");
-            // ignore the list of properties to exclude
-             var employes = builder.EntitySet<Employe>("employes");
-             employes.EntityType.Ignore(emp => emp.Nas);
-
+            ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
+            var employes = builder.EntitySet<Employe>("employes");
+            // ignore the list of properties to exclude    
+            /// appeler service pour recuperer les colonnes       
+            /// 
+            employes.EntityType.Ignore(e => e.Nas);
             return builder.GetEdmModel();
         }
     }

@@ -6,4 +6,3 @@ C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Framework\obj\Debu
 C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Framework\obj\Debug\netcoreapp2.2\UserManager.Framework.AssemblyInfo.cs
 C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Framework\obj\Debug\netcoreapp2.2\UserManager.Framework.dll
 C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Framework\obj\Debug\netcoreapp2.2\UserManager.Framework.pdb
-C:\Users\arsene.mayam\source\repos\usermanagement\UserManager.Framework\obj\Debug\netcoreapp2.2\UserManager.Framework.csprojAssemblyReference.cache

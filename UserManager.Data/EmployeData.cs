@@ -21,8 +21,9 @@ namespace UserManager.Data
   
         public IList<Employe> list()
         {
-            var list = DataAccessContext.Employe.ToList();         
-            return list.ToModel();
+            var list = DataAccessContext.Employe.ToListAsync();
+            list.Wait();
+            return list.Result.ToModel();
         }
     }
 }
