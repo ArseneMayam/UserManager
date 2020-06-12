@@ -10,15 +10,18 @@ using Microsoft.AspNet.OData.Builder;
 using UserManager.Framework.Pipeline;
 using UserManager.Data.Interfaces;
 using UserManager.Common.Models;
+using UserManager.Api.Helpers;
+using UserManager.Services.Interfaces;
 
 namespace usermanagement
 {
     public class Startup
     {
         public IConfiguration Configuration { get; }
+        public IDataAccesService DataAccesService { get; set; }
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = configuration;           
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -33,17 +36,18 @@ namespace usermanagement
             services.AddScoped<IProfileColonneData, UserManager.Data.ProfileColonneData>();
             services.AddScoped<IUtilisateurData, UserManager.Data.UtilisateurData>();
 
-            services.AddScoped<UserManager.Services.Interfaces.IEmployeService, UserManager.Services.Source.EmployeService>();
-            services.AddScoped<UserManager.Services.Interfaces.IDataAccesService, UserManager.Services.Source.DataAccessService>();
+            services.AddScoped<IEmployeService, UserManager.Services.Source.EmployeService>();
+            services.AddScoped<IDataAccesService, UserManager.Services.Source.DataAccessService>();
 
             services.AddScoped<IUserManagerServicePipeline, UserManagerServicePipeline>();
-          //  services.AddMvcCore(action => action.EnableEndpointRouting = false); // comment nd see
+          
             services.AddOData();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IDataAccesService dataAccesService)
         {
+            DataAccesService = dataAccesService;
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -61,22 +65,24 @@ namespace usermanagement
                
                 // routeBuilder : ajouté les methodes de Odata et buildé le url de l API 
                 routeBuilder.Expand().Select().Count().OrderBy().Filter().MaxTop(null);          
-                routeBuilder.MapODataServiceRoute("Employe", "odata/v1/employes", GetEdmModelEmployes());
+                routeBuilder.MapODataServiceRoute("Employe", "odata/v1/employes", EdmModelBuilder.GetEdmModelEmployes(DataAccesService));
             });
 
 
         }
 
         // pour que le count fonctionne faire un mapping oData sur le modele
-        private IEdmModel GetEdmModelEmployes()
+       private IEdmModel GetEdmModelEmployes(IDataAccesService dataAccesService)
         {
             ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
             var employes = builder.EntitySet<Employe>("employes");
             // ignore the list of properties to exclude    
             /// appeler service pour recuperer les colonnes       
             /// 
+            IQueryable<Colonne> colonnes = dataAccesService.GererDataAccess(1);
             employes.EntityType.Ignore(e => e.Nas);
             return builder.GetEdmModel();
         }
+
     }
 }

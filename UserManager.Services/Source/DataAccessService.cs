@@ -22,12 +22,16 @@ namespace UserManager.Services.Source
             ProfileColonneData = profileColonneData;
 
         }
+        public DataAccessService()
+        {
+
+        }
         // Methodes pour gerer data access 
         // Avec credentials
         public IQueryable<Colonne> GererDataAccess(string username, string password)
         {
             // recuperer utilisateur
-            Utilisateur utilisateur = RecupererUtilisateur(username, password);
+            Utilisateur utilisateur = RecupererUtilisateur(username, "abcd");
 
             //recuperer profile utilisateur
             Profile profile = RecupererProfile(utilisateur.UtilisateurId);
