@@ -27,6 +27,21 @@ namespace UserManager.Services.Source
 
         }
         // Methodes pour gerer data access 
+        public IQueryable<Colonne> GererDataAccess(string username)
+        {
+            // recuperer utilisateur
+            Utilisateur utilisateur = RecupererUtilisateur(username);
+
+            //recuperer profile utilisateur
+            Profile profile = RecupererProfile(utilisateur.UtilisateurId);
+
+            // Recuperer liste colonne Ids
+            IQueryable<int> listeColonneIds = RecupererListeColonneIds(profile.ProfileId);
+
+            // recuperer et retourner les colonnes
+            IQueryable<Colonne> colonnes = RecupererColonnes(listeColonneIds);
+            return colonnes;
+        }
         // Avec credentials
         public IQueryable<Colonne> GererDataAccess(string username, string password)
         {
@@ -76,6 +91,11 @@ namespace UserManager.Services.Source
         public Utilisateur RecupererUtilisateur(string username, string password)
         {
             return UtilisateurData.RecupererUtilisateur(username,password);
+        }
+
+        public Utilisateur RecupererUtilisateur(string username)
+        {
+            return UtilisateurData.RecupererUtilisateur(username);
         }
     }
 }

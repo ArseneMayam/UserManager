@@ -5,10 +5,13 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.OData;
+using Microsoft.AspNet.OData.Builder;
+using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNet.OData.Routing;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
+using Microsoft.OData.Edm;
 using UserManager.Api.Helpers;
 using UserManager.Common.Models;
 using UserManager.Services.Interfaces;
@@ -23,8 +26,7 @@ namespace UserManager.Api.Controllers
 
         internal IEmployeService ServiceEmploye { get; set; }
         internal IDataAccesService DataAccessService { get; set; }
-        AuthenticationHeaderValue Authorization { get; set; }
-
+      
         public EmployeController(IEmployeService serviceEmploye, IDataAccesService dataAccessService)
         {
 
@@ -35,25 +37,15 @@ namespace UserManager.Api.Controllers
      
         [HttpGet]
         [ODataRoute("", RouteName = "Employe")]
-        [EnableQuery()]
+        [MyCustomQueryable()]
+        [BasicAuthenticationHandler()]
         public IQueryable<Employe> Get()
         {
-            var authHeader = HttpContext.Request.Headers.TryGetValue("Authorization", out authorizationToken);
-            if (authHeader)
-            {
-                string stoken = authorizationToken.ToString();
-                int length = stoken.Length - 6;
-                stoken = stoken.Substring(6, length);
-                string base64Encoded = stoken;
-                string base64Decoded;
-                byte[] data = Convert.FromBase64String(base64Encoded);
-                base64Decoded = Encoding.ASCII.GetString(data);
-                int separator = base64Decoded.IndexOf(':');
-                string userName = base64Decoded.Substring(0, separator);
-                EdmModelBuilder.SetUsername(userName);
-            }
-         
-
+            IEdmModel model = this.Request.GetModel();
+            
+            var empl = model.EntityContainer.FindEntitySet("employes");
+            var e = model.EntityContainer.FindEntitySet("employes") as EdmEntitySet;
+          
             return ServiceEmploye.List();
         }
 

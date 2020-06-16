@@ -22,5 +22,11 @@ namespace UserManager.Data
 
             return utilisateur.ToModel();
         }
+
+        public Utilisateur RecupererUtilisateur(string username)
+        {
+           var utilisateur = DataAccessContext.Utilisateur.Where(u => u.Username == username).FirstOrDefault();
+           return utilisateur.ToModel();
+        }
     }
 }

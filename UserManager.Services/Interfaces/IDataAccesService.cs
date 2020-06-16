@@ -8,6 +8,7 @@ namespace UserManager.Services.Interfaces
 {
     public interface IDataAccesService
     {
+        Utilisateur RecupererUtilisateur(string username);
         // Recuperer utilisateur
         Utilisateur RecupererUtilisateur(string username, string password);
 
@@ -25,6 +26,7 @@ namespace UserManager.Services.Interfaces
         IQueryable<Colonne> GererDataAccess(string username, string password);
         // sans params pour tests
         IQueryable<Colonne> GererDataAccess(int utilisateur_id);
+        IQueryable<Colonne> GererDataAccess(string username);
 
     }
 }

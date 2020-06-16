@@ -8,5 +8,6 @@ namespace UserManager.Data.Interfaces
     public interface IUtilisateurData
     {
         Utilisateur RecupererUtilisateur(string username, string password);
+        Utilisateur RecupererUtilisateur(string username);
     }
 }

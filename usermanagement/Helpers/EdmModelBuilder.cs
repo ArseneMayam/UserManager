@@ -3,6 +3,7 @@ using Microsoft.OData.Edm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using UserManager.Common.Models;
 using UserManager.Services.Interfaces;
@@ -12,7 +13,7 @@ namespace UserManager.Api.Helpers
 {
     public static class EdmModelBuilder
     {
-        private static string Username { get; set; }
+             
 
         public static IEdmModel GetEdmModelEmployes(IDataAccesService dataAccesService)
         {
@@ -20,19 +21,21 @@ namespace UserManager.Api.Helpers
             var employes = builder.EntitySet<Employe>("employes");
             // ignore the list of properties to exclude    
             /// pour recuperer les colonnes   
+            string username = DecodeBase64(BasicAuthenticationHandler.Username);
+           // IQueryable<Colonne> colonnes = dataAccesService.GererDataAccess("amayam", "abcd");
+            IQueryable<Colonne> colonnes = dataAccesService.GererDataAccess("amayam");
 
-            IQueryable<Colonne> colonnes = dataAccesService.GererDataAccess("amayam", "abcd");
-            Type myType = typeof(Employe);
+
             foreach (Colonne col in colonnes)
-            {
-                string PropertyToIgnore = col.Nom;
+            {               
 
-                switch (PropertyToIgnore)
+                switch (col.Nom.ToString().Trim())
                 {
+
                     case "matricule":
                         employes.EntityType.Ignore(e => e.Matricule);
                         break;
-                    case "code_empl":
+                    case "Code_Empl":
                         employes.EntityType.Ignore(e => e.Code_Empl);
                         break;
                     case "rib":
@@ -46,17 +49,25 @@ namespace UserManager.Api.Helpers
                         break;
 
                 }
-
-
             }
 
-
+        
             return builder.GetEdmModel();
         }
 
-        public static void SetUsername(string username)
+    
+        public static string DecodeBase64(string decodeUser)
         {
-            Username = username;
+            if (String.IsNullOrEmpty(decodeUser))
+            {
+                return null;
+            }
+            var header = decodeUser.Replace("Basic", "").Trim();
+            var base64EncodedBytes = Convert.FromBase64String(header);
+            var cred = Encoding.UTF8.GetString(base64EncodedBytes).Split(new[] { ':' }, 2);
+            var username = cred[0];
+            return username;
+
         }
 
 
