@@ -13,46 +13,42 @@ namespace UserManager.Api.Helpers
 {
     public static class EdmModelBuilder
     {
-             
-
-        public static IEdmModel GetEdmModelEmployes(IDataAccesService dataAccesService)
+              
+        public static IEdmModel GetEdmModelEmployes(IQueryable<Colonne> colonnes = null)
         {
-            ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-            var employes = builder.EntitySet<Employe>("employes");
-            // ignore the list of properties to exclude    
-            /// pour recuperer les colonnes   
-            string username = DecodeBase64(BasicAuthenticationHandler.Username);
-           // IQueryable<Colonne> colonnes = dataAccesService.GererDataAccess("amayam", "abcd");
-            IQueryable<Colonne> colonnes = dataAccesService.GererDataAccess("amayam");
 
-
-            foreach (Colonne col in colonnes)
-            {               
-
-                switch (col.Nom.ToString().Trim())
+            var Builder = new ODataConventionModelBuilder();
+            var Employe = Builder.EntitySet<Employe>("employes");
+            if (colonnes != null)
+            {
+                foreach (Colonne col in colonnes)
                 {
+                    switch (col.Nom.ToString().Trim())
+                    {
 
-                    case "matricule":
-                        employes.EntityType.Ignore(e => e.Matricule);
-                        break;
-                    case "Code_Empl":
-                        employes.EntityType.Ignore(e => e.Code_Empl);
-                        break;
-                    case "rib":
-                        employes.EntityType.Ignore(e => e.Rib);
-                        break;
-                    case "nas":
-                        employes.EntityType.Ignore(e => e.Nas);
-                        break;
-                    case "tin":
-                        employes.EntityType.Ignore(e => e.Tin);
-                        break;
-
-                }
+                        case "matricule":
+                            Employe.EntityType.Ignore(e => e.Matricule);
+                            break;
+                        case "code_empl":
+                            Employe.EntityType.Ignore(e => e.Code_Empl);
+                            break;
+                        case "rib":
+                            Employe.EntityType.Ignore(e => e.Rib);
+                            break;
+                        case "nas":
+                            Employe.EntityType.Ignore(e => e.Nas);
+                           
+                            break;
+                        case "tin":
+                            Employe.EntityType.Ignore(e => e.Tin);
+                            break;
+                    }
+                }               
+                
             }
+            
+            return Builder.GetEdmModel();
 
-        
-            return builder.GetEdmModel();
         }
 
     

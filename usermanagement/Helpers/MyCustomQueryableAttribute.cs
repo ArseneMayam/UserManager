@@ -9,11 +9,19 @@ using Microsoft.OData.Edm;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNet.OData.Extensions;
+using Microsoft.AspNet.OData.Builder;
+using UserManager.Common.Models;
+using UserManager.Services.Interfaces;
 
 namespace UserManager.Api.Helpers
 {
     public class MyCustomQueryableAttribute : EnableQueryAttribute
     {
+   
+        public MyCustomQueryableAttribute()
+        {
+
+        }
         public override IQueryable ApplyQuery(IQueryable queryable, ODataQueryOptions queryOptions)
         {
             int? pagesize = null;
@@ -26,26 +34,5 @@ namespace UserManager.Api.Helpers
             return result;
         }
 
-        public override IEdmModel GetModel(
-            Type elementClrType,
-            HttpRequest request,
-            ActionDescriptor actionDescriptor)
-        {
-
-            // Get model for the request
-            IEdmModel model = request.GetModel();
-
-            /*if (model == EdmCoreModel.Instance || model.GetEdmType(elementClrType) == null)
-            {
-                // user has not configured anything or has registered a model without the element type
-                // let's create one just for this type and cache it in the action descriptor
-                model = actionDescriptor.GetEdmModel(request, elementClrType);
-            }
-
- 
-
-            Contract.Assert(model != null);*/
-            return model;
-        }
     }
 }

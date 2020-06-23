@@ -32,20 +32,17 @@ namespace UserManager.Api.Controllers
 
             ServiceEmploye = serviceEmploye;
             DataAccessService = dataAccessService;
+            DataAccessHelper.InitDataAccessService(dataAccessService);
         }
         
      
         [HttpGet]
         [ODataRoute("", RouteName = "Employe")]
-        [MyCustomQueryable()]
+        [MyCustomQueryable()]       
         [BasicAuthenticationHandler()]
+        [QueryableSelect()]     
         public IQueryable<Employe> Get()
         {
-            IEdmModel model = this.Request.GetModel();
-            
-            var empl = model.EntityContainer.FindEntitySet("employes");
-            var e = model.EntityContainer.FindEntitySet("employes") as EdmEntitySet;
-          
             return ServiceEmploye.List();
         }
 

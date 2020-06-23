@@ -40,7 +40,8 @@ namespace usermanagement
             services.AddScoped<IDataAccesService, UserManager.Services.Source.DataAccessService>();
 
             services.AddScoped<IUserManagerServicePipeline, UserManagerServicePipeline>();
-          
+            services.AddScoped<MyCustomQueryableAttribute>();
+            services.AddScoped<MyActionFilter>();
             services.AddOData();
         }
 
@@ -65,22 +66,23 @@ namespace usermanagement
                
                 // routeBuilder : ajouté les methodes de Odata et buildé le url de l API 
                 routeBuilder.Expand().Select().Count().OrderBy().Filter().MaxTop(null);          
-                routeBuilder.MapODataServiceRoute("Employe", "odata/v1/employes", EdmModelBuilder.GetEdmModelEmployes(DataAccesService));
+                routeBuilder.MapODataServiceRoute("Employe", "odata/v1/employes", EdmModelBuilder.GetEdmModelEmployes());
             });
 
 
         }
 
         // pour que le count fonctionne faire un mapping oData sur le modele
-       private IEdmModel GetEdmModelEmployes(IDataAccesService dataAccesService)
-        {
+       private IEdmModel GetEdmModelEmployes(IDataAccesService dataAccesService=null)
+         {
             ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
             var employes = builder.EntitySet<Employe>("employes");
+            var sets = builder.EntitySets;
             // ignore the list of properties to exclude    
             /// appeler service pour recuperer les colonnes       
             /// 
-            IQueryable<Colonne> colonnes = dataAccesService.GererDataAccess(1);
-            employes.EntityType.Ignore(e => e.Nas);
+            //IQueryable<Colonne> colonnes = dataAccesService.GererDataAccess(1);
+            // employes.EntityType.Ignore(e => e.Nas);
             return builder.GetEdmModel();
         }
 

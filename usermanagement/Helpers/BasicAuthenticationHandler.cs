@@ -23,6 +23,7 @@ namespace UserManager.Api.Helpers
         public override void OnActionExecuting(ActionExecutingContext actionContext)
         {
             actionContext.HttpContext.Request.Headers.TryGetValue("Authorization", out authorizationToken);
+           
         }
 
     }
