@@ -37,10 +37,10 @@ namespace UserManager.Api.Helpers
             IQueryable<Colonne> colonnes = DataAccessHelper.GetColonnes(username);
 
             var newSelectStringValues = getAllowedProperties(colonnes,request);
-            var parvalues = "Nom,Prenom,Nas";
+            var allparams = "Nom,Prenom,Nas";
             // conserver le queryString de la request
-            
-            request.QueryString = new QueryString("?$select=" + newSelectStringValues);
+            var maintain = RemoveQueryStringByKey(request, "$select");
+            request.QueryString = new QueryString("?$select=" + newSelectStringValues+"&"+maintain);
             var queryString = request.QueryString.ToString();
 
             base.OnActionExecuting(actionContext);
@@ -68,7 +68,7 @@ namespace UserManager.Api.Helpers
             Uri myUri = new Uri("http://www.example.com" + query);
             return System.Web.HttpUtility.ParseQueryString(myUri.Query).Get("$select");
         }
-
+    
         private List<string> getStringArray(string data)
         {
             if(data == "" || data == null) { return null; }
@@ -129,6 +129,24 @@ namespace UserManager.Api.Helpers
             
             }
             return res;
+        }
+
+
+        public static string RemoveQueryStringByKey(HttpRequest request, string key)        {
+            
+            var url = "http://www.example.com" + request.QueryString.Value;
+            var uri = new Uri(url);
+            // this gets all the query string key value pairs as a collection
+            var newQueryString = System.Web.HttpUtility.ParseQueryString(uri.Query);
+            // this removes the key if exists
+            newQueryString.Remove(key);
+            // this gets the page path from root without QueryString
+            string pagePathWithoutQueryString = uri.GetLeftPart(UriPartial.Path);
+            var tmp = newQueryString.Count > 0 ? String.Format("{0}?{1}", pagePathWithoutQueryString, newQueryString) : pagePathWithoutQueryString;
+            string separator = "?";
+            int separatorIndex = tmp.IndexOf(separator);
+
+            return tmp.Substring(separatorIndex + separator.Length);
         }
     }
 }
